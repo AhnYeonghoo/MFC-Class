@@ -127,6 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Constructor.cpp" />
+    <ClCompile Include="Encapsulation.cpp" />
+    <ClCompile Include="MemberInitializerList.cpp" />
     <ClCompile Include="OOPOverview.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

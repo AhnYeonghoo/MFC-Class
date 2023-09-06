@@ -18,5 +18,14 @@
     <ClCompile Include="OOPOverview.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Encapsulation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Constructor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MemberInitializerList.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

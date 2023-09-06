@@ -26,7 +26,7 @@ public:
 	}
 };
 
-int main()
+int mainMemberInitializerList()
 {
 	Something some;
 	some.print();

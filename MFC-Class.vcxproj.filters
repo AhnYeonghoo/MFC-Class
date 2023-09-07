@@ -27,5 +27,11 @@
     <ClCompile Include="MemberInitializerList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="DelegatingConstructors.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Destructor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

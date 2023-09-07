@@ -99,8 +99,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_LBUTTONDOWN:
 		hdc = GetDC(hWnd);
-		GetClientRect(hWnd, &rect);
-		DrawText(hdc, "마우스가 눌러졌습니다.", strlen("마우스가 눌러졌습니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		
+		TextOut(hdc, 20, 528, "마우스가 눌러졌습니다.", strlen("마우스가 눌러졌습니다."));
 		WCHAR text[100];
 		wsprintf((LPSTR)text, " x : %d \t y : %d", x, y);
 		TextOut(hdc, x + 5, y, LPSTR(text), lstrlen(LPSTR(text)));
@@ -110,10 +110,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		GetClientRect(hWnd, &rect);
 		DrawText(hdc, "마우스가 이동 중입니다.", strlen("마우스가 이동 중입니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		break;
+	case WM_RBUTTONDOWN:
+		hdc = GetDC(hWnd);
+		TextOut(hdc, 982, 524, "마우스가 눌러졌습니다.", strlen("마우스가 눌러졌습니다."));
+		break;
+	case WM_RBUTTONUP:
+		hdc = GetDC(hWnd);
+		TextOut(hdc, 982, 524, "                                             ", strlen("                                            "));
 	case WM_LBUTTONUP:
 		hdc = GetDC(hWnd);
 		GetClientRect(hWnd, &rect);
-		DrawText(hdc, "마우스가 떼어졌습니다..", strlen("마우스가 떼어졌습니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		TextOut(hdc, 20, 528, "                                              ", strlen("                                         "));
 		break;
 	default:		// 그 외의 메시지가 온 경우
 		return DefWindowProc(hWnd, message, wParam, lParam);

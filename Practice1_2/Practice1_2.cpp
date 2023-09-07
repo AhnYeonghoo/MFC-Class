@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <windowsx.h>
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
@@ -32,10 +33,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 		szAppName,		// 등록된 윈도우 클래스 이름
 		szTitleName,    // 타이틀 바에 출력될 문자열
 		WS_OVERLAPPEDWINDOW, // 윈도우 스타일
-		CW_USEDEFAULT,		// 윈도우 좌측 상단의 x좌표
-		CW_USEDEFAULT,		// 윈도우 좌축 상단의 y좌표
-		CW_USEDEFAULT,		// 윈도우의 너비
-		CW_USEDEFAULT,		// 윈도우의 높이
+		CW_USEDEFAULT,		// 윈도우 좌측 상단의 x좌표-> 디폴트
+		CW_USEDEFAULT,		// 윈도우 좌축 상단의 y좌표 -> 디폴트
+		CW_USEDEFAULT,		// 윈도우의 너비 -> 디폴트
+		CW_USEDEFAULT,		// 윈도우의 높이 -> 디폴트
 		NULL,				// 부모 윈도우의 핸들
 		NULL,				// 메뉴 또는 자식 윈도우의 핸들
 		hInstance,			// 애플리케이션 인스턴스 핸들
@@ -66,7 +67,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	LPCTSTR szMsg2 = "키보드가 눌러졌습니다."; // 키보드를 눌렀을 때 출력될 문자열
 	LPCTSTR szMsg3 = "키보드가 떼어졌습니다."; // 키보드를 떼었을 때 출력될 문자열
 	LPCTSTR szMsg4 = "LButtonDown";
-
+	int x = GET_X_LPARAM(lParam);
+	int y = GET_Y_LPARAM(lParam);
 	// 1. 커널에서 들어온 메시지를 switch문을 이용하여 처리
 	switch (message)
 	{
@@ -98,12 +100,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONDOWN:
 		hdc = GetDC(hWnd);
 		GetClientRect(hWnd, &rect);
-		DrawText(hdc, "마우스가 눌러졌습니다.", strlen("키보드가 눌러졌습니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		DrawText(hdc, "마우스가 눌러졌습니다.", strlen("마우스가 눌러졌습니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		WCHAR text[100];
+		wsprintf((LPSTR)text, " x : %d \t y : %d", x, y);
+		TextOut(hdc, x + 5, y, LPSTR(text), lstrlen(LPSTR(text)));
+		break;
+	case WM_MOUSEMOVE:
+		hdc = GetDC(hWnd);
+		GetClientRect(hWnd, &rect);
+		DrawText(hdc, "마우스가 이동 중입니다.", strlen("마우스가 이동 중입니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		break;
 	case WM_LBUTTONUP:
 		hdc = GetDC(hWnd);
 		GetClientRect(hWnd, &rect);
-		DrawText(hdc, "마우스가 떼어졌습니다..", strlen("키보드가 떼어졌습니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		DrawText(hdc, "마우스가 떼어졌습니다..", strlen("마우스가 떼어졌습니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		break;
 	default:		// 그 외의 메시지가 온 경우
 		return DefWindowProc(hWnd, message, wParam, lParam);

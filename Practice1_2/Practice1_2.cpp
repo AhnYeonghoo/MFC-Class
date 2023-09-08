@@ -67,8 +67,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	LPCTSTR szMsg2 = "키보드가 눌러졌습니다."; // 키보드를 눌렀을 때 출력될 문자열
 	LPCTSTR szMsg3 = "키보드가 떼어졌습니다."; // 키보드를 떼었을 때 출력될 문자열
 	LPCTSTR szMsg4 = "LButtonDown";
+	LPCSTR szLMouseDownMessage = "왼쪽 마우스가 클릭되었습니다.";
+	LPCSTR szRMouseDownMessage = "오른쪽 마우스가 클릭되었습니다.";
+	LPCSTR szLMouseUpMessage = "왼쪽 마우스가 떼어졌습니다.";
+	LPCSTR szRMouseUpMessage = "오른쪽 마우스가 떼어졌습니다.";
+	LPCSTR szLMouseBlclkMessage = "왼쪽 마우스를 더블클릭 하였습니다.";
+	LPCSTR szMouseMoveMessage = "마우스가 이동 중 입니다.";
+	LPCSTR szEmptyMessage = "                                                             ";
 	int x = GET_X_LPARAM(lParam);
 	int y = GET_Y_LPARAM(lParam);
+
 	// 1. 커널에서 들어온 메시지를 switch문을 이용하여 처리
 	switch (message)
 	{
@@ -92,15 +100,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		ReleaseDC(hWnd, hdc);
 		break;
 	case WM_LBUTTONDBLCLK: // 왼쪽 마우스를 더블 클릭 한 경우
-		MessageBox(hWnd, "마우스 더블 클릭!", "마우스메시지", MB_OK | MB_ICONASTERISK);
-		break;
-	case WM_DESTROY:		// 프로그램이 종료된 경우
-		PostQuitMessage(0);
+		MessageBox(hWnd, szLMouseBlclkMessage, "마우스 클릭", MB_OK | MB_ICONASTERISK);
 		break;
 	case WM_LBUTTONDOWN:
 		hdc = GetDC(hWnd);
-		
-		TextOut(hdc, 20, 528, "마우스가 눌러졌습니다.", strlen("마우스가 눌러졌습니다."));
+		TextOut(hdc, 20, 528, szLMouseDownMessage, strlen(szLMouseDownMessage));
 		WCHAR text[100];
 		wsprintf((LPSTR)text, " x : %d \t y : %d", x, y);
 		TextOut(hdc, x + 5, y, LPSTR(text), lstrlen(LPSTR(text)));
@@ -108,20 +112,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEMOVE:
 		hdc = GetDC(hWnd);
 		GetClientRect(hWnd, &rect);
-		DrawText(hdc, "마우스가 이동 중입니다.", strlen("마우스가 이동 중입니다."), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		DrawText(hdc, szMouseMoveMessage, strlen(szMouseMoveMessage), &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		break;
 	case WM_RBUTTONDOWN:
 		hdc = GetDC(hWnd);
-		TextOut(hdc, 982, 524, "마우스가 눌러졌습니다.", strlen("마우스가 눌러졌습니다."));
+		TextOut(hdc, 900, 524, szRMouseDownMessage, strlen(szRMouseDownMessage));
 		break;
 	case WM_RBUTTONUP:
 		hdc = GetDC(hWnd);
-		TextOut(hdc, 982, 524, "                                             ", strlen("                                            "));
+		TextOut(hdc, 900, 524, szEmptyMessage, strlen(szEmptyMessage));
 	case WM_LBUTTONUP:
 		hdc = GetDC(hWnd);
 		GetClientRect(hWnd, &rect);
-		TextOut(hdc, 20, 528, "                                              ", strlen("                                         "));
+		TextOut(hdc, 10, 528, szEmptyMessage, strlen(szEmptyMessage));
 		break;
+	case WM_DESTROY:		// 프로그램이 종료된 경우
+		PostQuitMessage(0);
+		break;
+	
 	default:		// 그 외의 메시지가 온 경우
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}

@@ -1,5 +1,5 @@
 
-int main()
+int mainMain()
 {
 
 	return 0;

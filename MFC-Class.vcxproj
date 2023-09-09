@@ -134,6 +134,7 @@
     <ClCompile Include="DelegatingConstructors.cpp" />
     <ClCompile Include="Destructor.cpp" />
     <ClCompile Include="Encapsulation.cpp" />
+    <ClCompile Include="FriendFunctions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemberInitializerList.cpp" />
     <ClCompile Include="OOPOverview.cpp" />

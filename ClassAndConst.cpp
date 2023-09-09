@@ -24,7 +24,7 @@ public:
 
 
 
-int main()
+int mainClassAndConst()
 {
 	const int i = 0;
 	Something2 something;

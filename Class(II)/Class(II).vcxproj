@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2b5a2108-8a85-4797-95f3-3a4e6829e46a}</ProjectGuid>
-    <RootNamespace>MFCClass</RootNamespace>
+    <ProjectGuid>{244aa150-58c3-4bd3-9270-d652ea8fe098}</ProjectGuid>
+    <RootNamespace>ClassII</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,21 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ChainingMemberFunctions.cpp" />
-    <ClCompile Include="Calculator.cpp" />
-    <ClCompile Include="Class1.cpp" />
-    <ClCompile Include="ClassAndConst.cpp" />
-    <ClCompile Include="Constructor.cpp" />
-    <ClCompile Include="DelegatingConstructors.cpp" />
-    <ClCompile Include="Destructor.cpp" />
-    <ClCompile Include="Encapsulation.cpp" />
-    <ClCompile Include="FriendFunctions.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MemberInitializerList.cpp" />
-    <ClCompile Include="OOPOverview.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Calculator.hpp" />
+    <ClCompile Include="ClassTemplates.cpp" />
+    <ClCompile Include="OverloadingOperators.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

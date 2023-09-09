@@ -11,7 +11,7 @@ void print(char* str)
 class Base2 { virtual void f() {} };
 class Derived2 : public Base2 {};
 
-int mainConstCast()
+int main()
 {
 	const char* c = "sample text";
 	// print(c); -> ºÒ°¡´É

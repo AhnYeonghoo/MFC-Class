@@ -58,7 +58,7 @@ T myPair<T>::getMax()
 	return retval;
 }
 
-int main()
+int mainClassTemplates()
 {
 	myPair<int> myobject{ 100, 75 };
 	cout << myobject.getMax() << endl;

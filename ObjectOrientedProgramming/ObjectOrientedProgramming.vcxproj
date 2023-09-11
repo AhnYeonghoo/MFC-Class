@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{244aa150-58c3-4bd3-9270-d652ea8fe098}</ProjectGuid>
-    <RootNamespace>ClassII</RootNamespace>
+    <ProjectGuid>{f5be0f4f-988e-4a65-9f5d-526ace1c64d7}</ProjectGuid>
+    <RootNamespace>ObjectOrientedProgramming</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,9 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ClassTemplates.cpp" />
-    <ClCompile Include="MyCar.cpp" />
-    <ClCompile Include="OverloadingOperators.cpp" />
+    <ClInclude Include="Animal.hpp" />
+    <ClInclude Include="Date.hpp" />
+    <ClInclude Include="Marine.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Marine.cpp" />
+    <ClCompile Include="PhotonCannon.cpp" />
+    <ClCompile Include="PhotonCannon.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

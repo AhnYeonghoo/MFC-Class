@@ -24,6 +24,9 @@
     <ClInclude Include="Marine.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="MyString.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animal.cpp">
@@ -39,6 +42,9 @@
       <Filter>헤더 파일</Filter>
     </ClCompile>
     <ClCompile Include="PhotonCannon.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MyString.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,3 +1,5 @@
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
 class MyString
@@ -9,6 +11,7 @@ private:
 public:
 	MyString(char c);
 	MyString(const char* str);
+	MyString();
 	MyString(const MyString& str);
 	~MyString();
 
@@ -28,4 +31,11 @@ public:
 	MyString& Insert(int loc, char c);
 
 	MyString& Erase(int loc, int num);
+
+	int Find(int findFrom, MyString& str) const;
+	int Find(int findFrom, const char* str) const;
+	int Find(int findFrom, char c) const;
+
+	int Compare(const MyString& str) const;
 };
+

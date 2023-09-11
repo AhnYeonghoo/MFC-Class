@@ -1,4 +1,5 @@
 #include "MyString.hpp"
+using namespace std;
 
 MyString::MyString(char c)
 {
@@ -215,4 +216,26 @@ int MyString::Compare(const MyString& str) const
 	if (this->stringLength == str.stringLength) return 0;
 	else if (this->stringLength > str.stringLength) return 1;
 	return -1;
+}
+
+MyString::MyString()
+{
+	const char* defaultString = "Default Name";
+	this->stringLength = strlen(defaultString);
+	this->stringContent = new char[stringLength+1];
+	this->stringContent = const_cast<char*>(defaultString);
+	this->memoryCapacity = strlen(this->stringContent);
+	this->stringLength = this->memoryCapacity;
+}
+
+
+int main()
+{
+	MyString myString;
+	MyString myString2{ "AhnYeonghoo" };
+	
+	cout << myString.Length() << endl;
+	myString.Println();
+	
+	return 0;
 }
